@@ -1,10 +1,7 @@
-// import Models.Poligon;
-// import Models.PoligonalModel;
-
-// import InMemory.ModelStore;
-
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class Program {
 

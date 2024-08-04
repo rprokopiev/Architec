@@ -11,12 +11,18 @@ public class ModelStore implements IModelChanger {
     private List<Camera> cameras = new ArrayList<>();
 
     
-    
-    public ModelStore(List<PoligonalModel> models, List<Flash> flashes, List<Scene> scenes, List<Camera> cameras) {
-        this.models = models;
-        this.flashes = flashes;
-        this.scenes = scenes;
-        this.cameras = cameras;
+    public List<Scene> getScenes() {
+        return scenes;
+    }
+
+    public Scene getScena(int id){
+        Scene result = new Scene();
+        for (Scene scene : scenes) {
+            if (id == scene.getId()){
+                result = scene;
+            }
+        }
+        return result;
     }
 
     public void add(PoligonalModel model){
@@ -40,48 +46,6 @@ public class ModelStore implements IModelChanger {
     public void RemovalModelChanger(ModelChangeObserver o) {
         observers.remove(0);        
     }
-
-    public List<ModelChangeObserver> getObservers() {
-        return observers;
-    }
-
-    public void setObservers(List<ModelChangeObserver> observers) {
-        this.observers = observers;
-    }
-
-    public List<PoligonalModel> getModels() {
-        return models;
-    }
-
-    public void setModels(List<PoligonalModel> models) {
-        this.models = models;
-    }
-
-    public List<Flash> getFlashes() {
-        return flashes;
-    }
-
-    public void setFlashes(List<Flash> flashes) {
-        this.flashes = flashes;
-    }
-
-    public List<Scene> getScenes() {
-        return scenes;
-    }
-
-    public void setScenes(List<Scene> scenes) {
-        this.scenes = scenes;
-    }
-
-    public List<Camera> getCameras() {
-        return cameras;
-    }
-
-    public void setCameras(List<Camera> cameras) {
-        this.cameras = cameras;
-    }
-
     
-
     
 }

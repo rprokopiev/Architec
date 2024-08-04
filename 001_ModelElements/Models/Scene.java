@@ -12,7 +12,9 @@ public class Scene {
     {
         id = ++counter;
     }
-    
+
+    public Scene() {
+    }
 
     public Scene(List<PoligonalModel> models) {
         this.models = models;
