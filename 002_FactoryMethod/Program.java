@@ -12,9 +12,10 @@ public class Program {
         System.out.println("Название: Circle или Rectangle или Square");
         String name = scanner.nextLine();
         
-        Creator.createShape(name, size);
+        Creator creator = new Creator();
+        creator.createShape(name, size);
 
-        
+        scanner.close();
 
     }
 }
