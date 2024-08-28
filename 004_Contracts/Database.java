@@ -14,6 +14,9 @@ public class Database {
         tickets.add(new Ticket());
         tickets.add(new Ticket());
         tickets.add(new Ticket());
+        customers.add(new Customer());
+        customers.add(new Customer());
+        customers.add(new Customer());
     }
     
     public Collection<Ticket> getTickets() {
