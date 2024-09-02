@@ -1,0 +1,27 @@
+Core packages includes packages:
+    Domain      == Entities
+    Application == UseCases
+
+Domain contains Entities
+
+Application - interfaces. 
+    Initiall only NoteEditor interface was created. 
+    However futher another editors maight be needed.
+    So proactivelly a general Editor inteface was created.
+
+    As agurments Editor uses abstract <T, TId> - to be used for specific interfaces.
+
+    Specific inteface NoteEditor implements Editor, 
+    and instead of <T, TId> uses specific agruments <Note, Integer>
+    Such sintacsis allows not to override methods in NoteEditor
+    onle specific to Note method was added - PrintAll  
+
+    Then ConcreteNoteEditor implements NoteEditor 
+    and overrides methods of all Editor and NoteEdior 
+    with correct arguments.
+    
+    Inteface NotesDatabaseContext - inteface to interract with Database.
+    Describes 2 general methods geting all records and saving changes made.
+    NotesDatabaseContext won't be implemented but
+    it will be given to the ConcreteNoteEditor as field and initiated via Constructor.
+    And then all methods will work with this context.
