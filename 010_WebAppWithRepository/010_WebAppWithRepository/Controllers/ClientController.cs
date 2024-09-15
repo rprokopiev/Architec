@@ -4,6 +4,7 @@ using _010_WebAppWithRepository.Services;
 using _010_WebAppWithRepository.Services.impl;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Reflection.PortableExecutable;
 
 namespace _010_WebAppWithRepository.Controllers
@@ -20,7 +21,8 @@ namespace _010_WebAppWithRepository.Controllers
         }
 
         [HttpPost("create")]
-        public IActionResult Create([FromBody] CreateClientRequest createRequest)
+        [SwaggerOperation(OperationId = "ClientCreate")]
+        public ActionResult<int> Create([FromBody] CreateClientRequest createRequest)
         {
             int res = _clientRepository.Create(new Client
             {
@@ -34,7 +36,8 @@ namespace _010_WebAppWithRepository.Controllers
         }
 
         [HttpPut("update")]
-        public IActionResult Update([FromBody] UpdateClientRequest updateRequest)
+        [SwaggerOperation(OperationId = "ClientUpdate")]
+        public ActionResult<int> Update([FromBody] UpdateClientRequest updateRequest)
         {
             int res = _clientRepository.Update(new Client
             {
@@ -49,20 +52,23 @@ namespace _010_WebAppWithRepository.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult Delete([FromBody] int clientId)
+        [SwaggerOperation(OperationId = "ClientDelete")]
+        public ActionResult<int> Delete([FromBody] int clientId)
         {
             int res = _clientRepository.Delete(clientId);
             return Ok(res);
         }
 
         [HttpGet("get-all")]
-        public IActionResult GetAll ()
+        [SwaggerOperation(OperationId = "ClientGetAll")]
+        public ActionResult<List<Client>> GetAll ()
         {
             return Ok(_clientRepository.GetAll());
         }
 
         [HttpGet("get/{clientId}")]
-        public IActionResult GetById ([FromRoute] int clientId)
+        [SwaggerOperation(OperationId = "ClientGetAllById")]
+        public ActionResult<Client> GetById ([FromRoute] int clientId)
         {
             return Ok(_clientRepository.GetById(clientId));
         }

@@ -4,6 +4,7 @@ using _010_WebAppWithRepository.Services;
 using _010_WebAppWithRepository.Services.impl;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace _010_WebAppWithRepository.Controllers
 {
@@ -19,7 +20,8 @@ namespace _010_WebAppWithRepository.Controllers
         }
 
         [HttpPost("create")]
-        public IActionResult Create([FromBody] CreateConsultationRequest createRequest)
+        [SwaggerOperation(OperationId = "ConsultationCreate")]
+        public ActionResult<int> Create([FromBody] CreateConsultationRequest createRequest)
         {
             int res = _consultationRepository.Create(new Consultation
             {
@@ -32,7 +34,8 @@ namespace _010_WebAppWithRepository.Controllers
         }
 
         [HttpPut("update")]
-        public IActionResult Update([FromBody] UpdateConsultationRequest updateRequest)
+        [SwaggerOperation(OperationId = "ConsultationUpdate")]
+        public ActionResult<int> Update([FromBody] UpdateConsultationRequest updateRequest)
         {
             int res = _consultationRepository.Update(new Consultation
             {
@@ -46,20 +49,23 @@ namespace _010_WebAppWithRepository.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult Delete([FromBody] int consultationId)
+        [SwaggerOperation(OperationId = "ConsultationDelete")]
+        public ActionResult<int> Delete([FromBody] int consultationId)
         {
             int res = _consultationRepository.Delete(consultationId);
             return Ok(res);
         }
 
         [HttpGet("get-all")]
-        public IActionResult GetAll()
+        [SwaggerOperation(OperationId = "ConsultationGetAll")]
+        public ActionResult<List<Client>> GetAll()
         {
             return Ok(_consultationRepository.GetAll());
         }
 
         [HttpGet("get/{consultationId}")]
-        public IActionResult GetById([FromRoute] int consultationId)
+        [SwaggerOperation(OperationId = "ConsultationGetAllByID")]
+        public ActionResult<Client> GetById([FromRoute] int consultationId)
         {
             return Ok(_consultationRepository.GetById(consultationId));
         }
